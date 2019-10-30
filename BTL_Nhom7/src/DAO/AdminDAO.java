@@ -138,7 +138,73 @@ public class AdminDAO {
 		dsgv = gvDAO.GetAll();
 		return dsgv;
 	}
-	public int a() {
-		return 40;
+	
+	public int RotVongThamDinh(String maVong) {
+		Connection con = DBconnect.getInstance().getConnection();
+		int n = 0;
+		try {
+			PreparedStatement stm = con.prepareStatement("select COUNT(*) as DSRot from SinhVien\n" + 
+					"WHERE mssv in (\n" + 
+					"select maSinhVien from VongBaoCao vong join DiemVong dv on vong.maVong=dv.maVong\n" + 
+					"where vong.maVong=?\n" + 
+					"group by maSinhVien\n" + 
+					"HAVING avg(diem)<5)");
+			stm.setString(1, maVong);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+				n = rs.getInt(1);
+				return n;
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
+	public int RotVongPhanBien(String maVong) {
+		int n=0;
+		Connection con = DBconnect.getInstance().getConnection();
+		try {
+			PreparedStatement stm = con.prepareStatement("select COUNT(*) as DSRot from SinhVien\n" + 
+					"WHERE mssv in (\n" + 
+					"select maSinhVien from VongBaoCao vong join DiemVong dv on vong.maVong=dv.maVong\n" + 
+					"where vong.maVong=?\n" + 
+					"group by maSinhVien\n" + 
+					"HAVING avg(diem)<5)");
+			stm.setString(1, maVong);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+				n = rs.getInt(1);
+				return n;
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
+	public int DauVongPhanBien(String maVong) {
+		Connection con = DBconnect.getInstance().getConnection();
+		int n = 0;
+		try {
+			PreparedStatement stm = con.prepareStatement("select COUNT(*) as Dau from SinhVien\n" + 
+					"WHERE mssv in (\n" + 
+					"select maSinhVien from VongBaoCao vong join DiemVong dv on vong.maVong=dv.maVong\n" + 
+					"where vong.maVong=?\n" + 
+					"group by maSinhVien\n" + 
+					"HAVING avg(diem)>=5)");
+			stm.setString(1, maVong);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) {
+				n = rs.getInt(1);
+				return n;
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return n;
 	}
 }

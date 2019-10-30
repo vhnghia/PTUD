@@ -59,14 +59,15 @@ public class GiaoDienThongKe extends JFrame{
         frame.setBounds(100, 100, 513, 362); //set size frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         aDAO = new AdminDAO();
-        int i = aDAO.a();
+        int diemVongTD = aDAO.RotVongThamDinh("TD");
+        int diemVongPB = aDAO.RotVongPhanBien("PB");
+        int slRot = diemVongPB+diemVongTD;
+        int slDau = aDAO.DauVongPhanBien("PB");
         //Set gia tr cho PieChart
-        dataset.setValue("Yeu", i);
-        dataset.setValue("Trung Binh", 20);
-        dataset.setValue("Kha", 20);
-        dataset.setValue("Gioi", 20);
+        dataset.setValue("Đậu", slDau);
+        dataset.setValue("Rớt", slRot);
 
-        jfreeChart = ChartFactory.createPieChart3D("Thong ke luan van", dataset, true, true, false);
+        jfreeChart = ChartFactory.createPieChart3D("Thống Kê Luận Văn", dataset, true, true, false);
         PiePlot3D plot = (PiePlot3D) jfreeChart.getPlot();
         //plot.setForegroundAlpha(0.6 f);
         plot.setSectionPaint("Không đạt ", new Color(255, 0, 0)); //Set color cho PieChart
