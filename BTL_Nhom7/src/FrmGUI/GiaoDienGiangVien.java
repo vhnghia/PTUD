@@ -258,6 +258,7 @@ public class GiaoDienGiangVien extends JFrame implements ActionListener{
 			jtKhoa.setText("");
 			jtTomTat.setText("");
 			jtGVHD.setText("");
+			jtTable.clearSelection();
 		}
 		
 	}

@@ -15,11 +15,12 @@ public class HoiDongDAO {
 	public void addHoiDong(HoiDong hd) {
 		Connection con = DBconnect.getInstance().getConnection();
 		try {
-			String sql = "insert into HoiDong(tenHoiDong,maVong,khoa) OUTPUT inserted.maHoiDong values(?,?,?)";
+			String sql = "insert into HoiDong(tenHoiDong,maVong,khoa,soLanCham) OUTPUT inserted.maHoiDong values(?,?,?,?)";
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setString(1,hd.getTenHD());
 			pst.setString(2, hd.getMaVong());
 			pst.setString(3, hd.getKhoa().getMaKhoa());
+			pst.setInt(4, hd.getSoLanCham());
 			int i = pst.executeUpdate();
 			pst.close();
 			con.close();
@@ -40,10 +41,11 @@ public class HoiDongDAO {
 				String tenHD = rs.getString(2);
 				String maVong = rs.getString(3);
 				String maKhoa = rs.getString(4);
+				int soLanCham = rs.getInt(5);
 				Khoa k = new Khoa();
 				KhoaDAO kDAO = new KhoaDAO();
 				k = kDAO.TimKhoa(maKhoa);
-				HoiDong hd1 = new HoiDong(maHD,tenHD,maVong,k);
+				HoiDong hd1 = new HoiDong(maHD,tenHD,maVong,k,soLanCham);
 				hd.add(hd1);
 			}
 		}catch (Exception e) {

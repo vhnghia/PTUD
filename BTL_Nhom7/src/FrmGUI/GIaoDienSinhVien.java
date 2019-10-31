@@ -311,6 +311,7 @@ public class GIaoDienSinhVien extends JFrame implements ActionListener, MouseLis
 			jtKhoa.setText("");
 			jtTomTat.setText("");
 			jtGVHD.setText("");
+			jtTable.clearSelection();
 		}
 
 	}

@@ -286,6 +286,7 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 			jtKhoa.setText("");
 			jtTomTat.setText("");
 			jtGVHD.setText("");
+			jtTable.clearSelection();
 		}
 		
 		if(e.getSource().equals(menuIQLGV)) {

@@ -211,11 +211,25 @@ public class GiaoDienThemHoiDong extends JFrame implements ActionListener{
 		btnThemVaoHoiDong.addActionListener(this);
 		btnBoChon.addActionListener(this);
 		btnLuuHoiDong.addActionListener(this);
+		menuIQLGV.addActionListener(this);
+		menuIQLSV.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource().equals(menuIQLGV)) {
+			GiaoDienQuanLiGiangVien gdqlgv = new GiaoDienQuanLiGiangVien();
+			gdqlgv.setVisible(true);
+			dispose();
+		}
+		
+		if(e.getSource().equals(menuIQLSV)) {
+			GiaoDienQuanLiSinhVien gdqlsv = new GiaoDienQuanLiSinhVien();
+			gdqlsv.setVisible(true);
+			dispose();
+		}
+		
 		if(e.getSource().equals(cboKhoa)) {
 			AdminDAO admindao = new AdminDAO();
 			ArrayList<GiangVien> gv = admindao.LocTheoKhoa1(cboKhoa.getItemAt(cboKhoa.getSelectedIndex())+"");
@@ -422,6 +436,7 @@ public class GiaoDienThemHoiDong extends JFrame implements ActionListener{
 		hd.setMaVong("PB");
 		hd.setKhoa(k);
 		hd.setTenHD(tenHD);
+		hd.setSoLanCham(0);
 		hdDAO.addHoiDong(hd);
 		ArrayList<HoiDong> arrayListHD = new ArrayList<HoiDong>();
 		arrayListHD = hdDAO.getAllHoiDong();
