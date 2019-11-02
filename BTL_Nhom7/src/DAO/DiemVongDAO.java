@@ -35,7 +35,6 @@ public class DiemVongDAO {
 		public DiemVong getDiemVongPhanBien(String ma1, String maVong1) {
 			List<Float> diem = new ArrayList<>();
 			List<String> gv = new ArrayList<String>();
-			System.out.println("asasd");
 			Connection con = DBconnect.getInstance().getConnection();
 			try {
 				String sql = "select v.tenVong,gv.hoTen, diem, sv.hoTenSV from SinhVien sv join DiemVong dv on sv.mssv=dv.maSinhVien join GiangVien gv on gv.maGiaoVien= dv.maGiangVien join VongBaoCao v on v.maVong=dv.maVong WHERE sv.mssv= ? and dv.maVong = ?";
@@ -53,5 +52,24 @@ public class DiemVongDAO {
 			}
 			DiemVong dv = new DiemVong(null,null,null,diem,null,null,gv);
 			return dv;
+		}
+		
+		public void themDiemGiangVien(String maSV,String maGV, String maVong, float diem) {
+			Connection con = DBconnect.getInstance().getConnection();
+			int i = 0;
+			try {
+				String sql = "INSERT INTO DiemVong(maSinhVien,maGiangVien,maVong,diem) VALUES(?,?,?,?)";
+				PreparedStatement stm = con.prepareStatement(sql);
+				stm.setString(1, maSV);
+				stm.setString(2, maGV);
+				stm.setString(3, maVong);
+				stm.setFloat(4,diem);
+				i = stm.executeUpdate();
+				stm.close();
+				con.close();
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
 		}
 }

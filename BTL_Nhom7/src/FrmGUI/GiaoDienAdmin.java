@@ -63,7 +63,7 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 	private JPanel jp;
 	private JLabel lbMSVV, lbtenSV, lbTenDeTai, lbTomTat, lbGVHD, lbTTLV,lbLogo,lbKhoa;
 	private JTextField jtMSVV, jttenSV, jtTenDeTai, jtTomTat, jtGVHD,jtKhoa, jtMSSV1;
-	private JMenuItem menuIQLSV , menuIDangXuat, menuIThoat, menuIQLGV, menuIThongKe, menuIThemHoiDong;
+	private JMenuItem menuIQLSV , menuIDangXuat, menuIThoat, menuIQLGV, menuIThongKe, menuIThemHoiDong,MenuIDiem;
 	private JMenu menu1,menu2,menuThongKe; 
 	private JMenuBar menuBar;
 	private DefaultTableModel modelLuanVan;
@@ -97,11 +97,13 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 		menuIDangXuat = new JMenuItem("Đăng xuất");
 		menuIThoat = new JMenuItem("Thoát hệ thống");
 		menuIThemHoiDong = new JMenuItem("Tạo hội đồng");
+		MenuIDiem = new JMenuItem("Chấm điểm sinh viên");
 		menu1.add(menuIQLGV);
 		menu1.add(menuIQLSV);
 		menu1.add(menuIThemHoiDong);
 		menu2.add(menuIDangXuat);
 		menu2.add(menuIThoat);
+		menu1.add(MenuIDiem);
 		menuThongKe.add(menuIThongKe);
 		
 		ImageIcon img2 = new ImageIcon("Images/ql.png");
@@ -113,7 +115,7 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 		ImageIcon img7 = new ImageIcon("Images/tk.png");		
 		ImageIcon img8 = new ImageIcon("Images/kqtk.png");
 		ImageIcon img9 = new ImageIcon("Images/HD.png");
-		
+		ImageIcon imgDiem = new ImageIcon("Images/diem.png");
 		menu1.setIcon(img2);
 		menu2.setIcon(img5);
 		menuIDangXuat.setIcon(img4);
@@ -124,6 +126,7 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 		menuIThongKe.setIcon(img8);
 		menuThongKe.setIcon(img7);
 		menuIThemHoiDong.setIcon(img9);
+		MenuIDiem.setIcon(imgDiem);
 		jp.add(menuBar,BorderLayout.NORTH);
 		
 		JPanel jpCenter = new JPanel();
@@ -252,6 +255,7 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 		menuIQLSV.addActionListener(this);
 		menuIThongKe.addActionListener(this);
 		menuIThemHoiDong.addActionListener(this);
+		MenuIDiem.addActionListener(this);
 		jtTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
@@ -309,6 +313,12 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 		if(e.getSource().equals(menuIThemHoiDong)) {
 			GiaoDienThemHoiDong gdthd = new GiaoDienThemHoiDong();
 			gdthd.setVisible(true);
+			dispose();
+		}
+		
+		if(e.getSource().equals(MenuIDiem)) {
+			GiaoDienChamDiemSinhVien gdcdsv = new GiaoDienChamDiemSinhVien();
+			gdcdsv.setVisible(true);
 			dispose();
 		}
 		

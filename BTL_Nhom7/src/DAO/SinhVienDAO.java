@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 
 import Database.DBconnect;
 import Entites.Khoa;
@@ -129,6 +129,44 @@ public class SinhVienDAO {
 			e.printStackTrace();
 		}
 		return "";
+	}
+	
+	public List<SinhVien>getAllSVDTD(String maVong,int diem){
+		Connection con = DBconnect.getInstance().getConnection();
+		List<SinhVien> dsSV = new ArrayList<SinhVien>();
+		try {
+			String sql = "select * from SinhVien\n" + 
+					"WHERE mssv in (\n" + 
+					"select maSinhVien from VongBaoCao vong join DiemVong dv on vong.maVong=dv.maVong\n" + 
+					"where vong.maVong=?\n" + 
+					"group by maSinhVien\n" + 
+					"HAVING avg(diem)>=?)";
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setString(1, maVong);
+			stm.setInt(2, diem);
+			ResultSet rs = stm.executeQuery();
+			while(rs.next())
+			{
+				String mssv = rs.getString(1);
+				String hoten = rs.getString(2);
+				Date ngaySinh = rs.getDate(3);
+				int ngayVaoTruong = rs.getInt(4);
+				String makhoa = rs.getString(5);
+				int ngayRaTruong = rs.getInt(6);
+				
+				KhoaDAO khoaDAO = new KhoaDAO();
+				Khoa a = new Khoa();
+				a = khoaDAO.TimKhoa(makhoa);
+				UserDAO userDAO = new UserDAO();
+				User user = userDAO.getUser(mssv);
+				SinhVien sv = new SinhVien(mssv,hoten,ngaySinh,ngayVaoTruong,ngayRaTruong,a,user);
+				dsSV.add(sv);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return dsSV;
 	}
 	
 }

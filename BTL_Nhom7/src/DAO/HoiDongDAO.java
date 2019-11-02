@@ -56,4 +56,40 @@ public class HoiDongDAO {
 		
 	}
 	
+	public int soLanCham(int maHD) {
+		int n = 0;
+		Connection con = DBconnect.getInstance().getConnection();
+		try {
+			String sql = "select soLanCham from HoiDong where maHoiDong = ?";
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setInt(1,maHD);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next())
+				n = rs.getInt(1);
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
+	public void CapNhatSoLanChamHoiDong(int maHD) {
+		Connection con = DBconnect.getInstance().getConnection();
+		int n = soLanCham(maHD)+1;
+		int i = 0;
+		try {
+			String sql = "Update HoiDong SET soLanCham = ? where maHoiDong = ?";
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setInt(1, n);
+			stm.setInt(2, maHD);
+			i = stm.executeUpdate();
+			stm.close();
+			con.close();
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
 }

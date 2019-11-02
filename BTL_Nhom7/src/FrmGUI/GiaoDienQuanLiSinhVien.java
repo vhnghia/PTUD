@@ -38,7 +38,7 @@ public class GiaoDienQuanLiSinhVien extends JFrame implements ActionListener{
 	private JPanel jp, jpWest;
 	private String tk;
 	private JLabel lbLoc;
-	private JMenuItem menuIQLSV , menuIDangXuat, menuIThoat, menuIQLGV, menuIThongKe,menuHome;
+	private JMenuItem menuIQLSV , menuIDangXuat, menuIThoat, menuIQLGV, menuIThongKe,menuHome,menuIThemHoiDong,menuIDiem;
 	private JMenu menu1,menu2,menuThongKe; 
 	private JMenuBar menuBar;
 	private JTextField jtMSSV;
@@ -74,6 +74,8 @@ public class GiaoDienQuanLiSinhVien extends JFrame implements ActionListener{
 		menuIQLSV = new JMenuItem("Quản lý sinh viên");
 		menuIQLGV = new JMenuItem("Quản lý giảng viên");
 		menuIThongKe = new JMenuItem("Thống kê luận văn");
+		menuIThemHoiDong = new JMenuItem("Tạo hội đồng");
+		menuIDiem = new JMenuItem("Chấm điểm sinh viên");
 		
 		menuIDangXuat = new JMenuItem("Đăng xuất");
 		menuIThoat = new JMenuItem("Thoát hệ thống");
@@ -83,6 +85,8 @@ public class GiaoDienQuanLiSinhVien extends JFrame implements ActionListener{
 		menu2.add(menuIDangXuat);
 		menu2.add(menuIThoat);
 		menu2.add(menuHome);
+		menu1.add(menuIThemHoiDong);
+		menu1.add(menuIDiem);
 		menuThongKe.add(menuIThongKe);
 		
 		ImageIcon img9 = new ImageIcon("Images/home.png");
@@ -94,6 +98,8 @@ public class GiaoDienQuanLiSinhVien extends JFrame implements ActionListener{
 		ImageIcon img3 = new ImageIcon("Images/gv.png");
 		ImageIcon img7 = new ImageIcon("Images/tk.png");		
 		ImageIcon img8 = new ImageIcon("Images/kqtk.png");
+		ImageIcon imgDiem = new ImageIcon("Images/diem.png");
+		ImageIcon imgHoiDong = new ImageIcon("Images/hd.png");
 		
 		menu1.setIcon(img2);
 		menu2.setIcon(img5);
@@ -105,6 +111,8 @@ public class GiaoDienQuanLiSinhVien extends JFrame implements ActionListener{
 		menuIThongKe.setIcon(img8);
 		menuThongKe.setIcon(img7);
 		menuHome.setIcon(img9);
+		menuIDiem.setIcon(imgDiem);
+		menuIThemHoiDong.setIcon(imgHoiDong);
 		jp.add(menuBar,BorderLayout.NORTH);
 		
 		JPanel jpCenter = new JPanel();
@@ -168,6 +176,9 @@ public class GiaoDienQuanLiSinhVien extends JFrame implements ActionListener{
 		menuIDangXuat.addActionListener(this);
 		menuIThoat.addActionListener(this);
 		menuHome.addActionListener(this);
+		menuIThemHoiDong.addActionListener(this);
+		menuIDiem.addActionListener(this);
+		menuIThongKe.addActionListener(this);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -228,6 +239,28 @@ public class GiaoDienQuanLiSinhVien extends JFrame implements ActionListener{
 			GiaoDienAdmin gda = new  GiaoDienAdmin();
 			gda.setVisible(true);
 			dispose();
+		}
+		
+		if(e.getSource().equals(menuIThemHoiDong)) {
+			GiaoDienThemHoiDong gdthd = new GiaoDienThemHoiDong();
+			gdthd.setVisible(true);
+			dispose();
+		}
+		
+		if(e.getSource().equals(menuIDiem)) {
+			GiaoDienChamDiemSinhVien gdcdsv = new GiaoDienChamDiemSinhVien();
+			gdcdsv.setVisible(true);
+			dispose();
+		}
+		
+		if(e.getSource().equals(menuIThongKe)) {
+			GiaoDienThongKe gdtk = new GiaoDienThongKe();
+			gdtk.setVisible(true);
+		}
+		
+		if(e.getSource().equals(menuIThongKe)) {
+			GiaoDienThongKe gdtk = new GiaoDienThongKe();
+			gdtk.setVisible(true);
 		}
 		
 	}

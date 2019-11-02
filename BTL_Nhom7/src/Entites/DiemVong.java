@@ -67,6 +67,11 @@ public class DiemVong {
 	public void setGiangVien(List<String> giangVien) {
 		this.giangVien = giangVien;
 	}
+	@Override
+	public String toString() {
+		return "DiemVong [mssv=" + mssv + ", maGiangVien=" + maGiangVien + ", maVong=" + maVong + ", diem=" + diem
+				+ ", maVong1=" + maVong1 + ", sinhVien=" + sinhVien + ", giangVien=" + giangVien + "]";
+	}
 	
 	
 	
