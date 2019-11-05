@@ -580,7 +580,7 @@ public class GiaoDienChamDiemSinhVien extends JFrame implements ActionListener{
 		float diem2 = Float.parseFloat(jtDiem3.getText().toString());
 		float diem3 = Float.parseFloat(jtDiem4.getText().toString());
 		float diem4 = Float.parseFloat(jtDiem5.getText().toString());
-		if((diem <0 || diem>10 ) || (diem1 <0 || diem1>10 ) || (diem2 <0 || diem2>10 ) || (diem3 <0 || diem3>10 ) || (diem4 <0 || diem4 > 10 ))
+		if((diem<10.1 && diem>=0 ) || (diem1<10.1 && diem1>=0 ) || (diem2<10.1 && diem2>=0 ) || (diem3<10.1 && diem3>=0 ) || (diem4<10.1 && diem4>=0 ))
 			return false;
 		return true;
 	}
