@@ -465,10 +465,10 @@ public class GiaoDienChamDiemSinhVien extends JFrame implements ActionListener{
 						hdDAO.CapNhatSoLanChamHoiDong(maHD1);
 						int viTri = TimKiemViTriTrenDong(maSV);
 						jtTableSinhVien.setValueAt(dsDiem.get(0)+"", viTri, 3);
-						jtTableSinhVien.setValueAt(dsDiem.get(0)+"", viTri, 4);
-						jtTableSinhVien.setValueAt(dsDiem.get(0)+"", viTri, 5);
-						jtTableSinhVien.setValueAt(dsDiem.get(0)+"", viTri, 6);
-						jtTableSinhVien.setValueAt(dsDiem.get(0)+"", viTri, 7);
+						jtTableSinhVien.setValueAt(dsDiem.get(1)+"", viTri, 4);
+						jtTableSinhVien.setValueAt(dsDiem.get(2)+"", viTri, 5);
+						jtTableSinhVien.setValueAt(dsDiem.get(3)+"", viTri, 6);
+						jtTableSinhVien.setValueAt(dsDiem.get(4)+"", viTri, 7);
 						jtDiem1.setText(dsDiem.get(0)+"");
 						jtDiem2.setText(dsDiem.get(1)+"");
 						jtDiem3.setText(dsDiem.get(2)+"");
@@ -580,9 +580,9 @@ public class GiaoDienChamDiemSinhVien extends JFrame implements ActionListener{
 		float diem2 = Float.parseFloat(jtDiem3.getText().toString());
 		float diem3 = Float.parseFloat(jtDiem4.getText().toString());
 		float diem4 = Float.parseFloat(jtDiem5.getText().toString());
-		if((diem<10.1 && diem>=0 ) || (diem1<10.1 && diem1>=0 ) || (diem2<10.1 && diem2>=0 ) || (diem3<10.1 && diem3>=0 ) || (diem4<10.1 && diem4>=0 ))
-			return false;
-		return true;
+		if((diem<=10 && diem>=0 ) && (diem1<=10 && diem1>=0 ) && (diem2<=10 && diem2>=0 ) && (diem3<=10 && diem3>=0) && (diem4<=10 && diem4>=0 ))
+			return true;
+		return false;
 	}
 
 	public int TimKiemViTriTrenDong(String maSV) {

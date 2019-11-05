@@ -57,7 +57,6 @@ public class GiaoDienThongKe extends JFrame{
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(100, 100, 513, 362); //set size frame
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         aDAO = new AdminDAO();
         int diemVongTD = aDAO.RotVongThamDinh("TD");
         int diemVongPB = aDAO.RotVongPhanBien("PB");
@@ -90,7 +89,6 @@ public class GiaoDienThongKe extends JFrame{
         setSize(1000,800);
 		setLocationRelativeTo(null);
 		//setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
         JPanel jp = new JPanel();
         jp.setPreferredSize(new Dimension(500,500));
         jp.add(chartPanel,BorderLayout.CENTER);
