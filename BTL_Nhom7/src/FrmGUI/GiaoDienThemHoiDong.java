@@ -58,7 +58,7 @@ public class GiaoDienThemHoiDong extends JFrame implements ActionListener{
 	private KhoaDAO kDAO;
 	private ChiTietHoiDongDAO cthdDAO;
 	public GiaoDienThemHoiDong() {
-		setTitle("Giao Dien Them Hoi Dong");
+		setTitle("Giao Diện Tạo Hội Đồng");
 		setSize(1250,750);
 		setLocationRelativeTo(null);
 		setResizable(true);
@@ -430,7 +430,7 @@ public class GiaoDienThemHoiDong extends JFrame implements ActionListener{
 	
 	public boolean KiemTraTenHoiDong() {
 		if(!jtTenHoiDong.getText().toString().matches("^(hdcntt)[0-9]{0,}$") && !jtTenHoiDong.getText().toString().matches("^(hdqtkd)[0-9]{0,}$") && !jtTenHoiDong.getText().toString().matches("^(hdxd)[0-9]{0,}$") )
-			return false;
+				return false;
 		return true;
 	}
 	

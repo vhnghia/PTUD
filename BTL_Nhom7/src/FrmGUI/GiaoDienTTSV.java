@@ -43,7 +43,7 @@ public class GiaoDienTTSV extends JFrame implements ActionListener{
 	private JPanel jp;
 	private JLabel lbHoTen, lbNamVaoTruong, lbNamTotNghiep, lbMaSoSinhVien, lbKhoa,lbKhoaHoc;
 	private JTextField jtHoTen, jtNamVaoTruong, jtNamTotNghiep, jtMaSoSinhVien, jtKhoa, jtKhoaHoc;
-	private String tenTK;
+	private String tenTK="100";
 	private JTable jtTable;
 	private DefaultTableModel modelLuanVan;
 	private JMenuItem menuI1 ,menuIMatKhau, menuDangXuat, menuThoat,menuHome,menuKQHT;
@@ -51,17 +51,16 @@ public class GiaoDienTTSV extends JFrame implements ActionListener{
 	private JMenuBar menuBar;
 	private LuanVan lv;
 	private ArrayList<LuanVan> dslv = new ArrayList<LuanVan>();
-	public GiaoDienTTSV(String tk) {
+	public GiaoDienTTSV() {
 		setTitle("THONG TIN SINH VIEN");
 		setSize(1250, 750);
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		GiaoDienTTSV(tk);
+		GiaoDienTTSV();
 	}
-	public void GiaoDienTTSV(String tenTK1) {
+	public void GiaoDienTTSV() {
 		jp = new JPanel();
-		tenTK = tenTK1;
 		jp.setLayout(new BorderLayout());
 		//Jpanel West
 		menuBar = new JMenuBar();
@@ -239,7 +238,7 @@ public class GiaoDienTTSV extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource().equals(menuHome)) {
 			dispose();
-			GIaoDienSinhVien gdql = new GIaoDienSinhVien(tenTK);
+			GiaoDienAdmin gdql = new GiaoDienAdmin();
 			gdql.setVisible(true);
 			dispose();
 		}
@@ -276,12 +275,12 @@ public class GiaoDienTTSV extends JFrame implements ActionListener{
 		}
 		
 		if(e.getSource().equals(menuIMatKhau)) {
-			GiaoDienCapNhatMatKhau gdmk = new GiaoDienCapNhatMatKhau(tenTK);
+			GiaoDienCapNhatMatKhau gdmk = new GiaoDienCapNhatMatKhau();
 			gdmk.setVisible(true);
 		}
 		
 		if(e.getSource().equals(menuKQHT)) {
-			GiaoDienKetQuaHocTap gdkqht = new GiaoDienKetQuaHocTap(tenTK);
+			GiaoDienKetQuaHocTap gdkqht = new GiaoDienKetQuaHocTap();
 			gdkqht.setVisible(true);
 			dispose();
 		}

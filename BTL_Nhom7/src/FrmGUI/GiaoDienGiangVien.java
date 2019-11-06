@@ -36,25 +36,24 @@ public class GiaoDienGiangVien extends JFrame implements ActionListener{
 	private JPanel jp;
 	private JLabel lbMSVV, lbtenSV, lbTenDeTai, lbTomTat, lbGVHD, lbTTLV,lbLogo,lbKhoa;
 	private JTextField jtMSVV, jttenSV, jtTenDeTai, jtTomTat, jtGVHD,jtKhoa, jtMSSV1;
-	private String tk;
+	private String tk="120";
 	private JMenuItem menuI1 ,menuIMatKhau, menuDangXuat, menuThoat;
 	private JMenu menu1,menu2,menu3,menu4; 
 	private JMenuBar menuBar;
 	private DefaultTableModel modelLuanVan;
 	private JTable jtTable;
 	private LuanVanDAO lvDAO;
-	public GiaoDienGiangVien(String tenTK) {
+	public GiaoDienGiangVien() {
 		setTitle("Giao Diện Giảng Viên");
 		setSize(1250, 750);
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		GiaoDienGiangVien(tenTK);
+		GiaoDienGiangVien();
 	}
 	
-	public void GiaoDienGiangVien(String tenTK) {
+	public void GiaoDienGiangVien() {
 		jp = new JPanel();
-		tk = tenTK;
 		jp.setLayout(new BorderLayout());
 		//Jpanel West
 
@@ -229,13 +228,13 @@ public class GiaoDienGiangVien extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource().equals(menuI1)) {
-			GiaoDienTTGV ttgv = new GiaoDienTTGV(tk);
+			GiaoDienTTGV ttgv = new GiaoDienTTGV();
 			ttgv.setVisible(true);
 			dispose();
 		}
 		
 		if(e.getSource().equals(menuIMatKhau)) {
-			GiaoDienCapNhatMatKhau gdcnmk = new GiaoDienCapNhatMatKhau(tk);
+			GiaoDienCapNhatMatKhau gdcnmk = new GiaoDienCapNhatMatKhau();
 			gdcnmk.setVisible(true);
 		}
 

@@ -63,8 +63,8 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 	private JPanel jp;
 	private JLabel lbMSVV, lbtenSV, lbTenDeTai, lbTomTat, lbGVHD, lbTTLV,lbLogo,lbKhoa;
 	private JTextField jtMSVV, jttenSV, jtTenDeTai, jtTomTat, jtGVHD,jtKhoa, jtMSSV1;
-	private JMenuItem menuIQLSV , menuIDangXuat, menuIThoat, menuIQLGV, menuIThongKe, menuIThemHoiDong,MenuIDiem;
-	private JMenu menu1,menu2,menuThongKe; 
+	private JMenuItem menuIQLSV , menuIDangXuat, menuIThoat, menuIQLGV, menuIThongKe, menuIThemHoiDong,MenuIDiem, menuQLDSV, menuIXemThongTinSV,menuIDoiMatKhauSV,menuIXemKQHT, menuIXemThongTinGV,menuIDoiMatKhauGV;
+	private JMenu menu1,menu2,menuThongKe,menuSinhVien,menuGiangVien; 
 	private JMenuBar menuBar;
 	private DefaultTableModel modelLuanVan;
 	private JTable jtTable;
@@ -86,13 +86,25 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 		menu1 = new JMenu("Quản lý");
 		menu2 = new JMenu("Hệ thống");
 		menuThongKe = new JMenu("Thống kê");
+		menuSinhVien = new JMenu("Sinh Viên");
+		menuGiangVien = new JMenu("Giảng Viên");
+		
 		menuBar.add(menu1);
 		menuBar.add(menu2);
 		menuBar.add(menuThongKe);
+		menuBar.add(menuSinhVien);
+		menuBar.add(menuGiangVien);
 		//Menu Con chức năng 
 		menuIQLSV = new JMenuItem("Quản lý sinh viên");
 		menuIQLGV = new JMenuItem("Quản lý giảng viên");
 		menuIThongKe = new JMenuItem("Thống kê luận văn");
+		menuQLDSV = new JMenuItem("Quản lí điểm sinh viên");
+		menuIXemThongTinSV = new JMenuItem("Xem thông tin");
+		menuIDoiMatKhauSV = new JMenuItem("Đổi mật khẩu");
+		menuIXemKQHT = new JMenuItem("Kết quả điểm thi");
+		menuIDoiMatKhauGV = new JMenuItem("Đổi mật khẩu");
+		menuIXemThongTinGV = new JMenuItem("Xem thông tin");
+		
 		
 		menuIDangXuat = new JMenuItem("Đăng xuất");
 		menuIThoat = new JMenuItem("Thoát hệ thống");
@@ -104,8 +116,18 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 		menu2.add(menuIDangXuat);
 		menu2.add(menuIThoat);
 		menu1.add(MenuIDiem);
+		menu1.add(menuQLDSV);
 		menuThongKe.add(menuIThongKe);
-		
+		menuSinhVien.add(menuIXemThongTinSV);
+		menuSinhVien.add(menuIDoiMatKhauSV);
+		menuSinhVien.add(menuIXemKQHT);
+		menuGiangVien.add(menuIXemThongTinGV);
+		menuGiangVien.add(menuIDoiMatKhauGV);
+		ImageIcon imgGV = new ImageIcon("Images/gv.png");
+		ImageIcon imgPW = new ImageIcon("Images/ps.png");
+		ImageIcon imgKQHT = new ImageIcon("Images/kqht.png");
+		ImageIcon imgStudent = new ImageIcon("Images/st.png");
+		ImageIcon imgQLD = new ImageIcon("Images/qldiem.png");
 		ImageIcon img2 = new ImageIcon("Images/ql.png");
 		ImageIcon img4 = new ImageIcon("Images/dx.png");
 		ImageIcon img5 = new ImageIcon("Images/ht.png");
@@ -127,6 +149,14 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 		menuThongKe.setIcon(img7);
 		menuIThemHoiDong.setIcon(img9);
 		MenuIDiem.setIcon(imgDiem);
+		menuQLDSV.setIcon(imgQLD);
+		menuSinhVien.setIcon(imgStudent);
+		menuIDoiMatKhauSV.setIcon(imgPW);
+		menuIXemKQHT.setIcon(imgKQHT);
+		menuIXemThongTinSV.setIcon(imgStudent);
+		menuIDoiMatKhauGV.setIcon(imgPW);
+		menuGiangVien.setIcon(imgGV);
+		menuIXemThongTinGV.setIcon(imgGV);
 		jp.add(menuBar,BorderLayout.NORTH);
 		
 		JPanel jpCenter = new JPanel();
@@ -256,6 +286,12 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 		menuIThongKe.addActionListener(this);
 		menuIThemHoiDong.addActionListener(this);
 		MenuIDiem.addActionListener(this);
+		menuQLDSV.addActionListener(this);
+		menuIXemKQHT.addActionListener(this);
+		menuIDoiMatKhauSV.addActionListener(this);
+		menuIXemThongTinSV.addActionListener(this);
+		menuIXemThongTinGV.addActionListener(this);
+		menuIDoiMatKhauGV.addActionListener(this);
 		jtTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
@@ -321,6 +357,37 @@ public class GiaoDienAdmin extends JFrame implements ActionListener{
 			gdcdsv.setVisible(true);
 			dispose();
 		}
+		
+		if(e.getSource().equals(menuQLDSV)) {
+			GiaoDienQuanLiDiemSinhVien gdqldsv = new GiaoDienQuanLiDiemSinhVien();
+			gdqldsv.setVisible(true);
+			dispose();
+		}
+		
+		if(e.getSource().equals(menuIXemKQHT)) {
+			GiaoDienKetQuaHocTap gdkqht = new GiaoDienKetQuaHocTap();
+			gdkqht.setVisible(true);
+			dispose();
+		}
+		
+		if(e.getSource().equals(menuIDoiMatKhauSV)) {
+			GiaoDienCapNhatMatKhau gdcnmk = new GiaoDienCapNhatMatKhau();
+			gdcnmk.setVisible(true);
+		}
+		
+		if(e.getSource().equals(menuIXemThongTinSV)) {
+			GiaoDienTTSV gdttsv = new GiaoDienTTSV();
+			gdttsv.setVisible(true);
+			dispose();
+		}
+		
+		if(e.getSource().equals(menuIXemThongTinGV)) {
+			GiaoDienTTGV ttgv = new GiaoDienTTGV();
+			ttgv.setVisible(true);
+			dispose();
+		}
+		
+		
 		
 	}
 

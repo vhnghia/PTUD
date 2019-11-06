@@ -53,7 +53,6 @@ public class GIaoDienSinhVien extends JFrame implements ActionListener, MouseLis
 	private JPanel jp;
 	private JLabel lbMSVV, lbtenSV, lbTenDeTai, lbTomTat, lbGVHD, lbTTLV, lbLogo, lbKhoa;
 	private JTextField jtMSVV, jttenSV, jtTenDeTai, jtTomTat, jtGVHD, jtKhoa, jtMSSV1;
-	private String tk;
 	private JMenuItem menuI1, menuIMatKhau, menuDangXuat, menuThoat, menuKQHT;
 	private JMenu menu1, menu2, menu3, menu4;
 	private JMenuBar menuBar;
@@ -61,21 +60,21 @@ public class GIaoDienSinhVien extends JFrame implements ActionListener, MouseLis
 	private JTable jtTable;
 	private JComboBox cboTimKiem;
 	private LuanVanDAO lvDAO;
+	private String tk = "100";
 	private ArrayList<String> items = new ArrayList<String>();
 	private ArrayList<LuanVan> lv = new ArrayList<LuanVan>();
 
-	public GIaoDienSinhVien(String tenTK) {
+	public GIaoDienSinhVien() {
 		setTitle("Sinh Vien");
 		setSize(1250, 750);
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		GiaoDien(tenTK);
+		GiaoDien();
 	}
 
-	public void GiaoDien(String tenTK) {
+	public void GiaoDien() {
 		jp = new JPanel();
-		tk = tenTK;
 		jp.setLayout(new BorderLayout());
 		// Jpanel West
 
@@ -262,13 +261,13 @@ public class GIaoDienSinhVien extends JFrame implements ActionListener, MouseLis
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource().equals(menuI1)) {
-			GiaoDienTTSV gdttsv = new GiaoDienTTSV(tk);
+			GiaoDienTTSV gdttsv = new GiaoDienTTSV();
 			gdttsv.setVisible(true);
 			dispose();
 		}
 
 		if (e.getSource().equals(menuIMatKhau)) {
-			GiaoDienCapNhatMatKhau gdcnmk = new GiaoDienCapNhatMatKhau(tk);
+			GiaoDienCapNhatMatKhau gdcnmk = new GiaoDienCapNhatMatKhau();
 			gdcnmk.setVisible(true);
 		}
 
@@ -286,7 +285,7 @@ public class GIaoDienSinhVien extends JFrame implements ActionListener, MouseLis
 		}
 
 		if (e.getSource().equals(menuKQHT)) {
-			GiaoDienKetQuaHocTap gdkqht = new GiaoDienKetQuaHocTap(tk);
+			GiaoDienKetQuaHocTap gdkqht = new GiaoDienKetQuaHocTap();
 			gdkqht.setVisible(true);
 			dispose();
 		}

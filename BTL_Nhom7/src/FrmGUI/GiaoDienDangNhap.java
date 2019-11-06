@@ -76,59 +76,64 @@ public class GiaoDienDangNhap extends JFrame implements ActionListener{
 		btnLogin.addActionListener(this);
 		btnExit.addActionListener(this);
 	}
-	public int KiemTraSinhVien(String tenTK, String matKhau) {
-		sinhVienDAO = new SinhVienDAO();
-		ArrayList<SinhVien> sv = sinhVienDAO.GetAll();
-		for(int i=0;i<sv.size();i++) {
-			if(tenTK.equalsIgnoreCase(sv.get(i).getUser().getTenTK()) && matKhau.equalsIgnoreCase(sv.get(i).getUser().getMatKhau())) {
-				return 1;
-			}
-		}
-		return 0;
-	}
-	public int KiemTraGiangVien(String tenTK, String matKhau) {
-		giangVienDAO = new GiangVienDAO();
-		ArrayList<GiangVien> gv = giangVienDAO.GetAll();
-		for(int i=0;i<gv.size();i++) {
-			if(tenTK.equalsIgnoreCase(gv.get(i).getUser().getTenTK()) && matKhau.equalsIgnoreCase(gv.get(i).getUser().getMatKhau())) {
-				return 2;
-			}
-		}
-		return 0;
-	}
+//	public int KiemTraSinhVien(String tenTK, String matKhau) {
+//		sinhVienDAO = new SinhVienDAO();
+//		ArrayList<SinhVien> sv = sinhVienDAO.GetAll();
+//		for(int i=0;i<sv.size();i++) {
+//			if(tenTK.equalsIgnoreCase(sv.get(i).getUser().getTenTK()) && matKhau.equalsIgnoreCase(sv.get(i).getUser().getMatKhau())) {
+//				return 1;
+//			}
+//		}
+//		return 0;
+//	}
+//	public int KiemTraGiangVien(String tenTK, String matKhau) {
+//		giangVienDAO = new GiangVienDAO();
+//		ArrayList<GiangVien> gv = giangVienDAO.GetAll();
+//		for(int i=0;i<gv.size();i++) {
+//			if(tenTK.equalsIgnoreCase(gv.get(i).getUser().getTenTK()) && matKhau.equalsIgnoreCase(gv.get(i).getUser().getMatKhau())) {
+//				return 2;
+//			}
+//		}
+//		return 0;
+//	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+//		// TODO Auto-generated method stub
+//		if(e.getSource().equals(btnLogin)) {
+//			String tenTK = txtUserName.getText();
+//			String matKhau = txtPassword.getText();
+//			if(tenTK.equalsIgnoreCase("") || matKhau.equalsIgnoreCase("")) 
+//				JOptionPane.showMessageDialog(null, "Vui Lòng Nhập Đầy Đủ Thông Tin");
+//			else{
+//				if(KiemTraSinhVien(tenTK,matKhau)==1) {
+//					GIaoDienSinhVien gdql = new GIaoDienSinhVien(tenTK);
+//					gdql.setVisible(true);
+//					dispose();
+//				} 
+//				else if(KiemTraGiangVien(tenTK,matKhau)==2)
+//				{
+//					String tk = tenTK;
+//					GiaoDienGiangVien gdgv = new GiaoDienGiangVien(tk);
+//					gdgv.setVisible(true);
+//					System.out.println("Giang Vien");
+//					dispose();
+//				}
+//				else if(tenTK.equalsIgnoreCase("admin") && matKhau.equalsIgnoreCase("admin")) {
+//					GiaoDienAdmin admin = new GiaoDienAdmin();
+//					admin.setVisible(true);
+//					dispose();
+//				}
+//				else
+//					JOptionPane.showMessageDialog(null, "Sai Tên Đăng Nhập Hoặc Mật Khẩu");
+//			}
+//}
+		
 		if(e.getSource().equals(btnLogin)) {
-			String tenTK = txtUserName.getText();
-			String matKhau = txtPassword.getText();
-			if(tenTK.equalsIgnoreCase("") || matKhau.equalsIgnoreCase("")) 
-				JOptionPane.showMessageDialog(null, "Vui Lòng Nhập Đầy Đủ Thông Tin");
-			else{
-				if(KiemTraSinhVien(tenTK,matKhau)==1) {
-					GIaoDienSinhVien gdql = new GIaoDienSinhVien(tenTK);
-					gdql.setVisible(true);
-					dispose();
-				} 
-				else if(KiemTraGiangVien(tenTK,matKhau)==2)
-				{
-					String tk = tenTK;
-					GiaoDienGiangVien gdgv = new GiaoDienGiangVien(tk);
-					gdgv.setVisible(true);
-					System.out.println("Giang Vien");
-					dispose();
-				}
-				else if(tenTK.equalsIgnoreCase("admin") && matKhau.equalsIgnoreCase("admin")) {
-					GiaoDienAdmin admin = new GiaoDienAdmin();
-					admin.setVisible(true);
-					dispose();
-				}
-				else
-					JOptionPane.showMessageDialog(null, "Sai Tên Đăng Nhập Hoặc Mật Khẩu");
-			}
-			
-			
+			GiaoDienAdmin gdadmin = new GiaoDienAdmin();
+			gdadmin.setVisible(true);
+			dispose();
 		}
+		
 		if(e.getSource().equals(btnExit))
 			System.exit(0);
 		

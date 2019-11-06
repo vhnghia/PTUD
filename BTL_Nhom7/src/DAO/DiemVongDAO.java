@@ -72,4 +72,44 @@ public class DiemVongDAO {
 				e.printStackTrace();
 			}
 		}
+		
+		public void UpdateDiemSinhVien(float diem, String maGV, String maSV, String maVong) {
+			Connection con = DBconnect.getInstance().getConnection();
+			int i = 0;
+			try {
+				String sql = "Update DiemVong set diem = ? where maGiangVien = ? and maSinhVien = ? and maVong = ?";
+				PreparedStatement stm = con.prepareStatement(sql);
+				stm.setFloat(1,diem);
+				stm.setString(2, maGV);
+				stm.setString(3, maSV);
+				stm.setString(4,maVong);
+				i = stm.executeUpdate();
+				stm.close();
+				con.close();
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		
+		public List<String> getAllMaGV(String maSV, String maVong){
+			Connection con = DBconnect.getInstance().getConnection();
+			List<String> list = new ArrayList<String>();
+			try {
+				String sql = "select maGiangVien from DiemVong where maSinhVien = ? and maVong = ? ";
+				PreparedStatement stm = con.prepareStatement(sql);
+				stm.setString(1, maSV);
+				stm.setString(2, maVong);
+				ResultSet rs = stm.executeQuery();
+				while(rs.next()) {
+					String s = rs.getString(1);
+					list.add(s);
+				}
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			return list;
+		}
+		
 }

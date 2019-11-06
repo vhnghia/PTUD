@@ -19,16 +19,15 @@ public class GiaoDienCapNhatMatKhau extends JFrame implements ActionListener{
 	private JPasswordField jtMatKhauHienTai,jtMatKhauMoi,jtMatKhauMoi1;
 	private Button btnCancle, btnCapNhat;
 	private String taiKhoan="";
-	public GiaoDienCapNhatMatKhau(String tk) {
+	public GiaoDienCapNhatMatKhau() {
 		setTitle("Cập nhật mật khẩu!");
 		setSize(400, 240);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		CapNhat(tk);
+		CapNhat();
 	}
 	
-	public void CapNhat(String tk) {
-		taiKhoan = tk;
+	public void CapNhat() {
+		taiKhoan = "100";
 		JPanel jpCapNhat = new JPanel();
 		jpCapNhat.setPreferredSize(new Dimension(250,250));
 		jpCapNhat.setLayout(null);

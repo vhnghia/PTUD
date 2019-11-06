@@ -61,6 +61,9 @@ public class GiaoDienChamDiemSinhVien extends JFrame implements ActionListener{
 	private List<GiangVien> lGV;
 	private JButton btnLuuDiem;
 	private int stt = 0;
+	private JLabel lbTenHoiDong;
+	private JTextField jtTenHoiDong;
+	private int k=1;
 	public GiaoDienChamDiemSinhVien() {
 		// TODO Auto-generated constructor stub
 		setTitle("Giao Diện Chấm Điểm Sinh Viên");
@@ -140,7 +143,13 @@ public class GiaoDienChamDiemSinhVien extends JFrame implements ActionListener{
 		lbMaHD = new JLabel("Mã Hội Đồng:");
 		jpTTSVNorth.add(lbMaHD);
 		lbMaHD.setBounds(20,50,100,20);
-
+		lbTenHoiDong = new JLabel("Tên hội đồng");
+		jpTTSVNorth.add(lbTenHoiDong);
+		lbTenHoiDong.setBounds(250,50,130,20);
+		jtTenHoiDong = new JTextField();
+		jpTTSVNorth.add(jtTenHoiDong);
+		jtTenHoiDong.setBounds(380,50,130,20);
+		jtTenHoiDong.setEditable(false);
 		int n = dshd.size();
 		String [] combo = new String [n];
 		for(int i=0; i<n; i++)
@@ -158,7 +167,7 @@ public class GiaoDienChamDiemSinhVien extends JFrame implements ActionListener{
 
 		JPanel jpBangSinhVien = new JPanel();
 		JScrollPane scrollhd;
-		String [] Header = {"Mã số sinh viên","Tên sinh viên","Tên Khoa","Mark 1","Mark 2","Mark 3","Mark 4","Mark 5"};
+		String [] Header = {"Mã số sinh viên","Tên sinh viên","Tên Khoa","Điểm 1","Điểm 2","Điểm 3","Điểm 4","Điểm 5"};
 		modelSinhVien = new DefaultTableModel(Header,0);
 		jtTableSinhVien = new JTable(modelSinhVien);
 		jp.add(scrollhd = new JScrollPane(jtTableSinhVien,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED),BorderLayout.SOUTH);
@@ -389,6 +398,8 @@ public class GiaoDienChamDiemSinhVien extends JFrame implements ActionListener{
 		
 		if(e.getSource().equals(cboHoiDong)) {
 			int ma = Integer.parseInt(cboHoiDong.getItemAt(cboHoiDong.getSelectedIndex())+"");
+			int s = cboHoiDong.getSelectedIndex();
+			jtTenHoiDong.setText(dshd.get(s).getTenHD());
 			lGV = new ArrayList<GiangVien>();
 			chiTietHoiDongDAO = new ChiTietHoiDongDAO();
 			int soDong = jtTableHoiDong.getRowCount();
@@ -543,14 +554,14 @@ public class GiaoDienChamDiemSinhVien extends JFrame implements ActionListener{
 	}
 
 	public void NapDanhSachGiangVien() {
-		for(int i=1;i<dssv.size(); i++) {
+		for(int i=0;i<5; i++) {
 			{
-				NapDanhSachGiangVienVaoBang(lGV.get(i-1),i);
+				NapDanhSachGiangVienVaoBang(lGV.get(i));
 			}
 		}
 	}
 
-	public void NapDanhSachGiangVienVaoBang(GiangVien gv,int k) {
+	public void NapDanhSachGiangVienVaoBang(GiangVien gv) {
 
 		String row[] = {
 				k+"",
@@ -558,6 +569,7 @@ public class GiaoDienChamDiemSinhVien extends JFrame implements ActionListener{
 				gv.getTenGiangVien(),
 				gv.getKhoa().getTenKhoa()
 		};
+		k++;
 		modelHoiDong.addRow(row);
 	}
 

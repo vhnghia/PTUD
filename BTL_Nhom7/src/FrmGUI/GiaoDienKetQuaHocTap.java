@@ -33,24 +33,23 @@ public class GiaoDienKetQuaHocTap extends JFrame implements ActionListener{
 	private JPanel jp;
 	private JLabel lbHoTen, lbNamVaoTruong, lbNamTotNghiep, lbMaSoSinhVien, lbKhoa,lbKhoaHoc,lbLogo;
 	private JTextField jtHoTen, jtNamVaoTruong, jtNamTotNghiep, jtMaSoSinhVien, jtKhoa, jtKhoaHoc;
-	private String tenTK;
+	private String tenTK="100";
 	private JTable jtTable,jtTable1;
 	private DefaultTableModel modelLuanVan, modelLuanVan1;
 	private JMenuItem menuI1 ,menuIMatKhau, menuDangXuat, menuThoat,menuHome,menuKQHT;
 	private JMenu menu1,menu2,menu3,menu4; 
 	private JMenuBar menuBar;
 	DiemVongDAO dvDAO = new DiemVongDAO();
-	public GiaoDienKetQuaHocTap(String tk) {
+	public GiaoDienKetQuaHocTap() {
 		setTitle("Sinh Vien");
 		setSize(1250, 750);
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		GiaoDienKetQuaHocTap(tk);
+		GiaoDienKetQuaHocTap();
 	}
 
-	public void GiaoDienKetQuaHocTap(String tk) {
-		tenTK = tk;
+	public void GiaoDienKetQuaHocTap() {
 		jp = new JPanel();
 		jp.setLayout(new BorderLayout());
 		//Jpanel West
@@ -171,7 +170,7 @@ public class GiaoDienKetQuaHocTap extends JFrame implements ActionListener{
 
 		DiemVong dv = new DiemVong();
 		String maVong = "TD";
-		dv = dvDAO.getDiemVongThamDinh(tk,maVong);
+		dv = dvDAO.getDiemVongThamDinh("100",maVong);
 		NapVaoBang(dv);
 
 		JPanel jpKeQuaHocTap1 = new JPanel();
@@ -188,7 +187,7 @@ public class GiaoDienKetQuaHocTap extends JFrame implements ActionListener{
 
 		DiemVong dv1 = new DiemVong();
 		String maVong1 = "PB";
-		dv1 = dvDAO.getDiemVongPhanBien(tk,maVong1);
+		dv1 = dvDAO.getDiemVongPhanBien("100",maVong1);
 		NapVaoBang1(dv1);
 		
 		menuI1.addActionListener(this);
@@ -234,7 +233,7 @@ public class GiaoDienKetQuaHocTap extends JFrame implements ActionListener{
 		}
 		
 		if(e.getSource().equals(menuIMatKhau)) {
-			GiaoDienCapNhatMatKhau gdcnmk = new GiaoDienCapNhatMatKhau(tenTK);
+			GiaoDienCapNhatMatKhau gdcnmk = new GiaoDienCapNhatMatKhau();
 			gdcnmk.setVisible(true);
 		}
 		if(e.getSource().equals(menuThoat)) {
@@ -244,13 +243,13 @@ public class GiaoDienKetQuaHocTap extends JFrame implements ActionListener{
 		}
 		
 		if(e.getSource().equals(menuHome)) {
-			GIaoDienSinhVien gdql = new GIaoDienSinhVien(tenTK);
+			GiaoDienAdmin gdql = new GiaoDienAdmin();
 			gdql.setVisible(true);
 			dispose();
 		}
 		
 		if(e.getSource().equals(menuI1)) {
-			GiaoDienTTSV gdttsv = new GiaoDienTTSV(tenTK);
+			GiaoDienTTSV gdttsv = new GiaoDienTTSV();
 			gdttsv.setVisible(true);
 			dispose();
 		}

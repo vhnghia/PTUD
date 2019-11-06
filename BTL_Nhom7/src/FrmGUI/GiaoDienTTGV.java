@@ -43,18 +43,18 @@ public class GiaoDienTTGV extends JFrame implements ActionListener{
 	private String tk;
 	private JTable jtTable;
 	private DefaultTableModel modelLuanVan;
-	public GiaoDienTTGV(String tenTK) {
+	public GiaoDienTTGV() {
 		setTitle("Giao Diện Giảng Viên");
 		setSize(1250, 750);
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		GiaoDienTTGV(tenTK);
+		GiaoDienTTGV();
 	}
 	
-	public void GiaoDienTTGV(String tenTK) {
+	public void GiaoDienTTGV() {
 		jp = new JPanel();
-		tk= tenTK;
+		tk= "120";
 		System.out.println(tk);
 		jp.setLayout(new BorderLayout());
 		//Jpanel West
@@ -234,7 +234,7 @@ public class GiaoDienTTGV extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource().equals(menuIMatKhau)) {
-			GiaoDienCapNhatMatKhau gdcnmk = new GiaoDienCapNhatMatKhau(tk);
+			GiaoDienCapNhatMatKhau gdcnmk = new GiaoDienCapNhatMatKhau();
 			gdcnmk.setVisible(true);
 		}
 
@@ -251,7 +251,7 @@ public class GiaoDienTTGV extends JFrame implements ActionListener{
 		}
 		
 		if(e.getSource().equals(menuHome)) {
-			GiaoDienGiangVien gdgv = new GiaoDienGiangVien(tk);
+			GiaoDienAdmin gdgv = new GiaoDienAdmin();
 			gdgv.setVisible(true);
 			dispose();
 		}
